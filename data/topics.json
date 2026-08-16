@@ -1,0 +1,57 @@
+{
+  "_readme": "組み合わせのプール。cities×industries×anglesの総当たりを順番に消化し、1回の自動実行で1記事を生成します。",
+  "cities": [
+    { "name": "松江市", "slug": "matsue" },
+    { "name": "出雲市", "slug": "izumo" },
+    { "name": "浜田市", "slug": "hamada" },
+    { "name": "益田市", "slug": "masuda" },
+    { "name": "大田市", "slug": "ohda" },
+    { "name": "安来市", "slug": "yasugi" },
+    { "name": "江津市", "slug": "gotsu" },
+    { "name": "雲南市", "slug": "unnan" }
+  ],
+  "industries": [
+    { "name": "製造業", "slug": "manufacturing" },
+    { "name": "建設業", "slug": "construction" },
+    { "name": "医療・福祉", "slug": "healthcare-welfare" },
+    { "name": "卸売・小売業", "slug": "wholesale-retail" },
+    { "name": "運輸業", "slug": "transport" },
+    { "name": "宿泊・飲食サービス業", "slug": "hospitality-food" },
+    { "name": "情報通信業", "slug": "ict" },
+    { "name": "建築・不動産業", "slug": "architecture-realestate" }
+  ],
+  "angles": [
+    {
+      "key": "legal-duty",
+      "label": "法令上の実施義務と50人未満事業所での自主的な取り組み"
+    },
+    {
+      "key": "outsourcing-flow",
+      "label": "実施者代行(外部委託)の仕組みと社内負担の軽減"
+    },
+    {
+      "key": "high-stress-followup",
+      "label": "高ストレス者への面接指導フォロー体制"
+    },
+    {
+      "key": "group-analysis",
+      "label": "集団分析結果を活かした職場環境改善"
+    },
+    {
+      "key": "privacy",
+      "label": "個人情報保護と結果の厳重な管理体制"
+    },
+    {
+      "key": "cooperation",
+      "label": "産業医・保健師等の専門職との連携体制"
+    },
+    {
+      "key": "kenko-keiei",
+      "label": "健康経営優良法人の認定取得に向けたステップ"
+    },
+    {
+      "key": "online-efficiency",
+      "label": "オンライン受検による従業員負担の軽減と実施率向上"
+    }
+  ]
+}

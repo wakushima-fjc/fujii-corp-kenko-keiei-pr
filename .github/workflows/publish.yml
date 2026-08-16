@@ -1,0 +1,72 @@
+name: Generate & Publish
+
+on:
+  schedule:
+    # 毎週月曜 06:00 JST (= 日曜 21:00 UTC) に1本記事を自動生成
+    - cron: "0 21 * * 0"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  generate-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate new article
+        run: node scripts/generate.mjs
+
+      - name: Build static site
+        run: node scripts/build.mjs
+
+      - name: Commit generated content
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/state.json content/articles.json public
+          if git diff --cached --quiet; then
+            echo "変更はありません"
+          else
+            git commit -m "chore: 自動生成コンテンツを追加"
+            git push
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Notify IndexNow (Bing/Yandex等への即時通知)
+        continue-on-error: true
+        run: |
+          KEY=$(cat data/indexnow-key.txt)
+          SITE_URL=$(node -e "console.log(require('./data/company.json').siteUrl)")
+          HOST=$(node -e "console.log(new URL(require('./data/company.json').siteUrl).host)")
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d "{\"host\":\"${HOST}\",\"key\":\"${KEY}\",\"keyLocation\":\"${SITE_URL}${KEY}.txt\",\"urlList\":[\"${SITE_URL}\",\"${SITE_URL}articles/index.html\"]}"
+
+  deploy:
+    needs: generate-and-build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

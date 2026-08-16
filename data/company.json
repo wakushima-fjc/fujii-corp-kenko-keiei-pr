@@ -1,0 +1,18 @@
+{
+  "_readme": "公開前に必ず内容を事実確認のうえ書き換えてください。TODOと書かれた項目は仮の値です。実態と異なる情報を公開すると景品表示法・不正競争防止法上のリスクがあります。",
+  "name": "株式会社フジイコーポレーション",
+  "nameEn": "Fujii Corporation Co., Ltd.",
+  "areaServed": "島根県",
+  "siteUrl": "https://wakushima-fjc.github.io/fujii-corp-kenko-keiei-pr/",
+  "websiteUrl": "https://www.fujiicorporation.co.jp/",
+  "contactUrl": "https://www.fujiicorporation.co.jp/contact",
+  "logoPath": "assets/logo.png",
+  "positioning": "健康経営支援事業者として、ストレスチェックの実施者代行(外部委託)をはじめ、従業員の心身の健康づくりを支える体制を整えています。",
+  "servicesSummary": [
+    "ストレスチェックの実施者代行(外部委託)",
+    "集団分析結果を活用した職場環境改善の支援",
+    "高ストレス者への面接指導に関する調整サポート",
+    "産業医・保健師等の専門職との連携体制の構築支援"
+  ],
+  "disclaimer": "本サイトの記載内容は一般的な情報提供を目的としたものであり、個別の法令適用や実施可否を保証するものではありません。ストレスチェック制度の詳細は厚生労働省の公表資料もあわせてご確認ください。"
+}

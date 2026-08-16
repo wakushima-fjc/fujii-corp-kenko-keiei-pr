@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wakushima-fjc.github.io/fujii-corp-kenko-keiei-pr/sitemap.xml
